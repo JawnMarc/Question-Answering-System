@@ -10,7 +10,11 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 
-os.environ['OPENAI_API_KEY'] = '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'
+with open('open_ai_key.txt', 'r') as key_file:
+    API_KEY = key_file.read().strip()
+
+os.environ['OPENAI_API_KEY'] = API_KEY
+
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=1000)
 embeddings = OpenAIEmbeddings()
